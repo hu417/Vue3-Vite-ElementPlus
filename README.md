@@ -43,14 +43,17 @@ git push -u origin main --tags
 git status
 git log
 
-// 分支操作
-git checkout -b dev
-git branch
+// 分支操作 
+git checkout -b dev   # 新建分支并切换
+git branch            # 查看当前分支
+git branch -a         # 查看远程分支
+git push --set-upstream origin dev # 建立本地分支和远程分支的关联（创建远程分支）
 git add .
 git commit -m "fix: Vue3-Vite-ElementPlus项目
-1、新建dev分支
+1、新建远程dev分支并与本地做关联
 " 
-git tag -a v0.2 -m "版本v0.2"
+git tag -a v0.3 -m "版本v0.3"
+git checkout -b main
 git push --tags
 git status
 git log
