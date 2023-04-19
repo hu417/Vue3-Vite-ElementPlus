@@ -53,7 +53,10 @@ git commit -m "fix: Vue3-Vite-ElementPlus项目
 1、新建远程dev分支并与本地做关联
 " 
 git tag -a v0.3 -m "版本v0.3"
-git checkout -b main
+
+git checkout main     # 切换到main分支
+git merge dev         # 合并 dev 到 mian 分支
+
 git push --tags
 git status
 git log
