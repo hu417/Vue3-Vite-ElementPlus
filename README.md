@@ -43,5 +43,16 @@ git push -u origin main --tags
 git status
 git log
 
+// 分支操作
+git checkout -b dev
+git branch
+git add .
+git commit -m "fix: Vue3-Vite-ElementPlus项目
+1、新建dev分支
+" 
+git tag -a v0.2 -m "版本v0.2"
+git push -u origin main --tags
+git status
+git log
 
 ```
