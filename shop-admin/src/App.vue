@@ -8,7 +8,7 @@
     <el-button type="danger">Danger</el-button>
   </el-row> -->
 
-  <button 
+  <!-- <button 
     class="bg-pink-600 
       text-yellow-500 
       py-4 px-4 rounded-3xl 
@@ -20,19 +20,22 @@
   <hr style="color:brown">
   <button class="btn">
       按钮二
-  </button>
+  </button> -->
 
+  <router-view></router-view>
 </template>
 
 <script setup>
 
 </script>
 
-
-
 <style scoped>
+
+</style>
+
+<!-- <style scoped>
 .btn { 
   @apply bg-pink-600 text-yellow-500 py-4 px-4 rounded-3xl transition-all delay-100 hover:bg-pink-900
 }
 
-</style>
+</style> -->
