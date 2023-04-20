@@ -103,9 +103,9 @@ git branch -a         # 查看远程分支
 git push --set-upstream origin dev # 建立本地分支和远程分支的关联（创建远程分支）
 git add .
 git commit -m "fix: Vue3-Vite-ElementPlus项目
-1、项目初始化
+1、登录页面布局
 " 
-git tag -a v0.4 -m "版本v0.4"
+git tag -a v0.8 -m "版本v0.8"
 
 git checkout main     # 切换到main分支
 git merge dev         # 合并 dev 到 mian 分支
