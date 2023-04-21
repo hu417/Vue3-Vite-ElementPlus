@@ -73,6 +73,10 @@ vite集成:
 
 安装: 
 npm install element-plus --save
+
+
+icon图标:
+npm install @element-plus/icons-vue
 ```
 - [x] VueUse 工具库
 - [x] Axios
@@ -125,11 +129,11 @@ git branch -a         # 查看远程分支
 git push --set-upstream origin dev # 建立本地分支和远程分支的关联（创建远程分支）
 git add .
 git commit -m "fix: Vue3-Vite-ElementPlus项目
-1、引入router
-2、配置src别名
-3、路由配置和404页面
+1、login页面布局响应式处理
+2、全局引入icon图标
+3、login页面样式抽离
 " 
-git tag -a v0.8 -m "版本v0.8"
+git tag -a v0.9 -m "版本v0.9"
 git push --tags
 git status
 git log
