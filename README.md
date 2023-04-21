@@ -51,8 +51,29 @@ shop-admin/
 ```
 - [x] Vuex
 - [x] Vue-router 路由管理
+```bash
+官方文档: https://router.vuejs.org/zh/introduction.html
+
+安装:
+npm install vue-router@4
+```
 - [x] Windicss框架
+```bash
+官方文档: https://cn.windicss.org/guide/
+
+安装:
+npm i -D vite-plugin-windicss windicss
+vite集成:
+    https://cn.windicss.org/integrations/vite.html
+```
 - [x] ElementPlus组件库
+```bash
+官方文档: https://element-plus.gitee.io/zh-CN/guide/design.html
+组件文档: https://element-plus.gitee.io/zh-CN/component/button.html
+
+安装: 
+npm install element-plus --save
+```
 - [x] VueUse 工具库
 - [x] Axios
 - [x] Vscode
@@ -61,6 +82,7 @@ shop-admin/
 Chinese (Simplified)
 Vue Language Features (Volar)
 Vue 3 Snippets
+WindiCSS IntelliSense
 ```
 
 
@@ -103,19 +125,45 @@ git branch -a         # 查看远程分支
 git push --set-upstream origin dev # 建立本地分支和远程分支的关联（创建远程分支）
 git add .
 git commit -m "fix: Vue3-Vite-ElementPlus项目
-1、登录页面布局
+1、引入router
+2、配置src别名
+3、路由配置和404页面
 " 
 git tag -a v0.8 -m "版本v0.8"
-
-git checkout main     # 切换到main分支
-git merge dev         # 合并 dev 到 mian 分支
-
 git push --tags
 git status
 git log
 
 
+// 根据tag创建分支
+git origin fetch                        # 获得最新
+
+# git branch <new-branch-name> <tag-name> # 会根据tag创建新的分支
+git branch newbranch v1.0 . 会以tag v1.0创建新的分支newbranch。
+
+git checkout newbranch                  # 切换到新的分支。
+git push origin newbranch               # 把本地创建的分支提交到远程仓库
+
+
 // 其他操作
 git tag -d v0.3                 # 删除本地tag
 git push --delete origin v0.3   # 删除远程tag
+git checkout main               # 切换到main分支
+git merge dev                   # 合并 dev 到 mian 分支
+git reset HEAD                  # 撤销已经add，但是没有commit
+git reset --soft HEAD^          # 撤销已经commit，但是没有push到远端的文件（仅撤销commit 保留add操作）
+git reset --hard commit_id      # 回退到指定的commit id
+# 撤销已经push到远端的文件
+// 切换到指定分支
+git checkout 分支名
+// 撤回到需要的版本
+git reset --soft 需要回退到的版本号
+//提交撤销动作到服务器，强制提交当前版本号
+git push origin 分支名 --force
+
+
+// .gitignore文件
+node_modules/
+dist/
+
 ```
