@@ -17,6 +17,7 @@
 - [x] Vue3
 ```bash
 官方文档: https://cn.vuejs.org/
+快速上手: https://cn.vuejs.org/guide/quick-start.html
 ```
 - [x] Vite构建工具
 ```bash
@@ -129,11 +130,9 @@ git branch -a         # 查看远程分支
 git push --set-upstream origin dev # 建立本地分支和远程分支的关联（创建远程分支）
 git add .
 git commit -m "fix: Vue3-Vite-ElementPlus项目
-1、login页面布局响应式处理
-2、全局引入icon图标
-3、login页面样式抽离
+1、vue3基础-setup()语法糖+响应式基础(组合式api)
 " 
-git tag -a v0.9 -m "版本v0.9"
+git tag -a v0.10 -m "版本v0.10"
 git push --tags
 git status
 git log
