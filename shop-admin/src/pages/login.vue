@@ -25,16 +25,22 @@
                 <span>账号密码登录</span>
                 <span></span>
             </div>
-            <el-form :model="form" class="w-[250px]">
-                <el-form-item>
-                    <el-input v-model="form.name" placeholder="请输入用户名">
+            <!-- 
+                ref="formRef" ref：表单被引用时的名称，标识
+                rules 属性传入约定的验证规则 
+                model：表单数据对象 -->
+            <el-form ref="formRef" :rules="rules" :model="form" class="w-[250px]">
+                <el-form-item prop="username">
+                    <!-- v-model：绑定的表单数据对象属性 -->
+                    <el-input v-model="form.username" placeholder="请输入用户名">
                         <template #prefix>
                             <el-icon><user /></el-icon>
                         </template>
                     </el-input>
                 </el-form-item>
-                <el-form-item>
-                    <el-input v-model="form.password" placeholder="请输入密码">
+                <el-form-item prop="password">
+                    <el-input type="password" v-model="form.password" 
+                        placeholder="请输入密码" show-password>
                         <template #prefix>
                             <el-icon><Lock /></el-icon>
                         </template>
@@ -53,19 +59,59 @@
 
 
 <script setup>
-import { reactive } from 'vue'
+import { ref,reactive } from 'vue'
 
-// 按需引入
+// 按需引入icon图标组件
 //import { User, Lock } from '@element-plus/icons-vue'
+
+
+// 表单对象
+const formRef = ref(null)
 
 // do not use same name with ref
 const form = reactive({
-  name: '',
+  username: '',
   password: '',
 })
 
+// rules验证规则
+const rules = reactive({
+    // 与 prop对应的值相等
+    username: [
+            { 
+                required: true,  // required: 必填
+                message: '请输入用户名', // 提示信息
+                trigger: 'blur'  // 失去焦点时
+            },
+            { 
+                min: 1, max: 6,  // 字符长度
+                message: '长度在1~6个字符内', 
+                trigger: 'blur'
+            },
+        ],
+    password: [
+            { 
+                required: true,  // required: 必填
+                message: '请输入密码', // 提示信息
+                trigger: 'blur'  // 失去焦点时
+            },
+            { 
+                min: 1, max: 6,  // 字符长度
+                message: '长度在1~6个字符内', 
+                trigger: 'blur' 
+            },
+        ],  
+})
+
+
 const onSubmit = () => {
-  console.log('submit!')
+    formRef.value.validate((valid)=>{
+        if(!valid) {
+            return false;
+        }
+        console.log('验证通过!')
+    })
+    
 }
 </script>
 
