@@ -152,9 +152,9 @@ git branch -a         # 查看远程分支
 git push --set-upstream origin dev # 建立本地分支和远程分支的关联（创建远程分支）
 git add .
 git commit -m "fix: Vue3-Vite-ElementPlus项目
-1、引入vuex状态管理用户信息
+1、全局路由前置守卫拦截实现登录判断(token判断)
 " 
-git tag -a v0.16 -m "版本v0.16"
+git tag -a v0.17 -m "版本v0.17"
 git push
 git push --tags
 git status
