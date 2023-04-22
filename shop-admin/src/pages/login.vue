@@ -76,6 +76,8 @@ const router = useRouter()
 
 import { setToken } from '@/composables/auth'
 
+import { useStore } from 'vuex'
+const store = useStore()
 // 按需引入icon图标组件
 //import { User, Lock } from '@element-plus/icons-vue'
 
@@ -153,7 +155,9 @@ const onSubmit = () => {
 
             // 获取用户相关信息
             getinfo().then((res2) => {
-                console.log(res2)
+                // console.log(res2)
+                store.commit("SET_USERINFO",res2)
+
             })
 
             // 登录成功后进行跳转

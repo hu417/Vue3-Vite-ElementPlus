@@ -50,7 +50,13 @@ shop-admin/
 |   `-- style.css
 `-- vite.config.js
 ```
-- [x] Vuex
+- [x] Vuex状态管理
+```bash
+官方文档: https://vuex.vuejs.org/zh/index.html
+安装:
+npm install vuex@next --save
+
+```
 - [x] Vue-router 路由管理
 ```bash
 官方文档: https://router.vuejs.org/zh/introduction.html
@@ -146,9 +152,9 @@ git branch -a         # 查看远程分支
 git push --set-upstream origin dev # 建立本地分支和远程分支的关联（创建远程分支）
 git add .
 git commit -m "fix: Vue3-Vite-ElementPlus项目
-1、常用工具库封装: 通知模块，token处理
+1、引入vuex状态管理用户信息
 " 
-git tag -a v0.15 -m "版本v0.15"
+git tag -a v0.16 -m "版本v0.16"
 git push
 git push --tags
 git status

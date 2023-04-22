@@ -12,7 +12,9 @@
         <el-button  @click="remove">token删除</el-button>
     </div>
 
-
+    <div>
+        {{ $store.state.user }}
+    </div>
     <!-- setup()语法糖 -->
     <!-- <div>
         <el-button @click="addCount">
