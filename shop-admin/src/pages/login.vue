@@ -70,6 +70,9 @@ import { ElNotification } from 'element-plus'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
+// useCookies引入
+import { useCookies} from "@vueuse/integrations/useCookies"
+
 // 按需引入icon图标组件
 //import { User, Lock } from '@element-plus/icons-vue'
 
@@ -134,6 +137,10 @@ const onSubmit = () => {
                 duration: 1000,  // 停留时间
                 position: 'top-right',  // 弹出位置，
             })
+
+            // token存储
+            const cookie = useCookies()
+            cookie.set("admin-token",res.data.data.token)
 
             // 登录成功后进行跳转
             router.push('/')
