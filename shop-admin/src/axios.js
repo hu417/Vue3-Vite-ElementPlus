@@ -1,11 +1,12 @@
 import axios from "axios"
 
 // 引入通知组件
-import { ElNotification } from 'element-plus'
+// import { ElNotification } from 'element-plus'
+import { toast } from '@/composables/utils'
 
 // useCookies引入
-import { useCookies} from "@vueuse/integrations/useCookies"
-
+// import { useCookies} from "@vueuse/integrations/useCookies"
+import { getToken } from '@/composables/auth'
 
 
 // 创建axios实例
@@ -25,8 +26,9 @@ service.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
 
     // 往header里自动添加token
-    const cookie = useCookies()
-    const token = cookie.get("admin-token")
+    // const cookie = useCookies()
+    // const token = cookie.get("admin-token")
+    const token = getToken()
     if (token) {
         config.headers["token"] = token
     }
@@ -48,13 +50,14 @@ service.interceptors.response.use(
     function (error) {
         // 对响应错误做点什么
         // 通知设置
-        ElNotification({
-            // title: 'Error',
-            message: error.response.data.msg || '请求失败',
-            type: 'error',
-            duration: 2000,  // 停留时间
-            position: 'top-right',  // 弹出位置
-        })
+        toast(error.response.data.msg || '请求失败',"error")
+        // ElNotification({
+        //     // title: 'Error',
+        //     message: error.response.data.msg || '请求失败',
+        //     type: 'error',
+        //     duration: 2000,  // 停留时间
+        //     position: 'top-right',  // 弹出位置
+        // })
         return Promise.reject(error);
     }
 );

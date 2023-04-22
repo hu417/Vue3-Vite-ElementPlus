@@ -64,14 +64,17 @@ import { ref,reactive } from 'vue'
 import { login,getinfo }  from '@/api/manager'
 
 // // 引入通知组件
-import { ElNotification } from 'element-plus'
+// import { ElNotification } from 'element-plus'
+import { toast } from '@/composables/utils'
 
 // 引入路由
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
 // useCookies引入
-import { useCookies} from "@vueuse/integrations/useCookies"
+// import { useCookies} from "@vueuse/integrations/useCookies"
+
+import { setToken } from '@/composables/auth'
 
 // 按需引入icon图标组件
 //import { User, Lock } from '@element-plus/icons-vue'
@@ -134,17 +137,19 @@ const onSubmit = () => {
             console.log(res) // token信息
 
             // 通知设置
-            ElNotification({
-                // title: 'Success',
-                message: '登录成功',
-                type: 'success',
-                duration: 1000,  // 停留时间
-                position: 'top-right',  // 弹出位置，
-            })
+            toast('登录成功','success')
+            // ElNotification({
+            //     // title: 'Success',
+            //     message: '登录成功',
+            //     type: 'success',
+            //     duration: 1000,  // 停留时间
+            //     position: 'top-right',  // 弹出位置，
+            // })
 
             // token存储
-            const cookie = useCookies()
-            cookie.set("admin-token",res.token)
+            // const cookie = useCookies()
+            // cookie.set("admin-token",res.token)
+            setToken(res.token)
 
             // 获取用户相关信息
             getinfo().then((res2) => {
