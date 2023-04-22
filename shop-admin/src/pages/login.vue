@@ -60,6 +60,15 @@
 
 <script setup>
 import { ref,reactive } from 'vue'
+// 引入接口函数
+import { login }  from '@/api/manager'
+
+// 引入通知组件
+import { ElNotification } from 'element-plus'
+
+// 引入路由
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 // 按需引入icon图标组件
 //import { User, Lock } from '@element-plus/icons-vue'
@@ -109,7 +118,41 @@ const onSubmit = () => {
         if(!valid) {
             return false;
         }
-        console.log('验证通过!')
+        // console.log('验证通过!')
+
+        // 调用login：默认登录信息: admin/admin
+        login(form.username, form.password)
+        // 捕获请求成功信息
+        .then(res => {
+            console.log(res.data.data) // token信息
+
+            // 通知设置
+            ElNotification({
+                // title: 'Success',
+                message: '登录成功',
+                type: 'success',
+                duration: 1000,  // 停留时间
+                position: 'top-right',  // 弹出位置，
+            })
+
+            // 登录成功后进行跳转
+            router.push('/')
+        })
+        // 捕获请求失败信息
+        .catch(err => {
+            console.log(err.response.data.msg)
+
+            // 通知设置
+            ElNotification({
+                // title: 'Error',
+                message: err.response.data.msg || '登录失败',
+                type: 'error',
+                duration: 2000,  // 停留时间
+                position: 'top-right',  // 弹出位置
+            })
+            
+        })
+
     })
     
 }
