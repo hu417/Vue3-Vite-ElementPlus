@@ -59,9 +59,10 @@
 
 
 <script setup>
-import { ref,reactive } from 'vue'
+import { ref,reactive,onMounted,onBeforeUnmount } from 'vue'
 // 引入接口函数
-import { login,getinfo }  from '@/api/manager'
+// import { login,getinfo }  from '@/api/manager'
+// import { login }  from '@/api/manager'
 
 // // 引入通知组件
 // import { ElNotification } from 'element-plus'
@@ -74,7 +75,7 @@ const router = useRouter()
 // useCookies引入
 // import { useCookies} from "@vueuse/integrations/useCookies"
 
-import { setToken } from '@/composables/auth'
+// import { setToken } from '@/composables/auth'
 
 import { useStore } from 'vuex'
 const store = useStore()
@@ -132,47 +133,70 @@ const onSubmit = () => {
         // 请求之前设置true
         loading.value = true;
 
-        // 调用login：默认登录信息: admin/admin
-        login(form.username, form.password)
-        // 捕获请求成功信息
-        .then(res => {
-            console.log(res) // token信息
-
-            // 通知设置
-            toast('登录成功','success')
-            // ElNotification({
-            //     // title: 'Success',
-            //     message: '登录成功',
-            //     type: 'success',
-            //     duration: 1000,  // 停留时间
-            //     position: 'top-right',  // 弹出位置，
-            // })
-
-            // token存储
-            // const cookie = useCookies()
-            // cookie.set("admin-token",res.token)
-            setToken(res.token)
-
-            // 获取用户相关信息
-            getinfo().then((res2) => {
-                // console.log(res2)
-                store.commit("SET_USERINFO",res2)
-
-            })
-
-            // 登录成功后进行跳转
+        // 登录的封装
+        store.dispatch('login', form).then(() => {
+            toast("登录成功","success")
             router.push('/')
-        })
-        // 捕获异常，请求失败信息
-        .catch(err => {
-            console.log(err.response.data.msg)
-        })
-        
-        .finally(() => {
+        }).finally(() => {
             loading.value = false   
         })
+        // 调用login：默认登录信息: admin/admin
+        // login(form.username, form.password)
+        // // 捕获请求成功信息
+        // .then(res => {
+        //     console.log(res) // token信息
+
+        //     // 通知设置
+        //     toast('登录成功','success')
+        //     // ElNotification({
+        //     //     // title: 'Success',
+        //     //     message: '登录成功',
+        //     //     type: 'success',
+        //     //     duration: 1000,  // 停留时间
+        //     //     position: 'top-right',  // 弹出位置，
+        //     // })
+
+        //     // token存储
+        //     // const cookie = useCookies()
+        //     // cookie.set("admin-token",res.token)
+        //     // setToken(res.token)
+
+        //     // 获取用户相关信息
+        //     // getinfo().then((res2) => {
+        //     //     // console.log(res2)
+        //     //     store.commit("SET_USERINFO",res2)
+
+        //     // })
+
+        //     // 登录成功后进行跳转
+        //     router.push('/')
+        // })
+        // // 捕获异常，请求失败信息
+        // .catch(err => {
+        //     console.log(err.response.data.msg)
+        // })
+        
+        // .finally(() => {
+        //     loading.value = false   
+        // })
     }) 
 }
+
+// 监听回车事件
+function onKeyUp(e){
+    if (e.key == "Enter") onSubmit();
+}
+
+// 添加键盘监听
+onMounted(() => {
+    document.addEventListener("keyup", onKeyUp);
+}),
+
+// 移除键盘监听
+onBeforeUnmount(() => {
+    document.removeEventListener("keyup", onKeyUp);
+})
+
 </script>
 
 <style>

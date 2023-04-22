@@ -2,9 +2,10 @@
 import router from '@/router/index'
 import { getToken } from '@/composables/auth'
 import { toast } from '@/composables/utils'
+import store from '@/store'
 
 // 全局路由前置守卫
-router.beforeEach((to,from,next) => {
+router.beforeEach(async (to,from,next) => {
     console.log("前置路由守卫")
     console.log(to," <--- ",from)
     
@@ -21,6 +22,11 @@ router.beforeEach((to,from,next) => {
     if (token && to.path == '/login') {
 
         return next({ path: from.path ? from.path : '/login' })
+    }
+
+    // 如果用户登录了。自动获取用户信息，并存储到vuex中
+    if (token) {
+        await store.dispatch("getinfo")
     }
 
     // 放行
