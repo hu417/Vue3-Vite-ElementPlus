@@ -5,11 +5,17 @@ import axios from "@/axios";
 
 // login api
 export function login(username, password) {
-    // login请求
+    // post请求
     return axios.post('/admin/login',{
-        username: username,
-        password: password
+        username,
+        password
     })
 
+}
+
+// userinfo api
+export function getinfo() {
+    // get 请求
+    return axios.post('/admin/getinfo')
 }
 
