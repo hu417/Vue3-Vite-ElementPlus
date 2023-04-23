@@ -103,6 +103,12 @@ Vue3+Vite实战商城后台api文档:
 http://dishaxy.dishait.cn/shopadminapi
 
 ```
+- [x] loading
+```bash
+进度条: https://www.npmjs.com/package/nprogress
+安装:
+npm i nprogress
+```
 - [x] Vscode
 ```bash
 插件:
@@ -152,9 +158,10 @@ git branch -a         # 查看远程分支
 git push --set-upstream origin dev # 建立本地分支和远程分支的关联（创建远程分支）
 git add .
 git commit -m "fix: Vue3-Vite-ElementPlus项目
-1、退出登录功能实现
+1、全局loading进度条实现-nprogress
+2、动态页面标题-title
 " 
-git tag -a v0.19 -m "版本v0.19"
+git tag -a v0.20 -m "版本v0.20"
 git push
 git push --tags
 git status
