@@ -1,6 +1,8 @@
 // 引入通知组件
 import { ElNotification,ElMessageBox } from 'element-plus'
 
+// 引入nprogress
+import nProgress from 'nprogress'
 
 // 通知设置
 export function toast(message,type,dangerouslyUseHTMLString=false) {
@@ -30,6 +32,16 @@ export function showModal(content = "提示内容",type = "warning",title = "") 
 }
 
 
+// 显示全屏loading
+export function showFullLoading() {
+    nProgress.start();
+
+}
+
+// 隐藏全屏loading
+export function hideFullLoading(){
+    nProgress.done()
+}
 
 
 

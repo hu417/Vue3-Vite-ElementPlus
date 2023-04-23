@@ -29,7 +29,12 @@
 
 </script>
 
-<style scoped>
+<style>
+
+#nprogress .bar {
+  background-color: rgb(216, 38, 74)!important; 
+  height: 3px!important;
+}
 
 </style>
 
