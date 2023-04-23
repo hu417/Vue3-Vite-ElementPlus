@@ -3,6 +3,9 @@ import {
     createWebHashHistory
 } from 'vue-router'
 
+// 引入布局
+import Admin from '@/layouts/admin.vue'
+
 import Index from '@/pages/index.vue'
 import About from '@/pages/about.vue'
 import NotFound from '@/pages/404.vue'
@@ -13,10 +16,18 @@ import Login from '@/pages/login.vue'
 const routes = [
     {
         path: '/',
-        component: Index,
-        meta: {
-            title: "后台首页"
-        }
+        // component: Index,
+        component: Admin,
+        // meta: {
+        //     title: "后台首页"
+        // }
+        children: [{
+            path: '/',
+            component: Index,
+            meta: {
+                title: "后台首页"
+            }
+        }]
     },
     {
         path: '/about',
