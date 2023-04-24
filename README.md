@@ -91,7 +91,8 @@ npm install @element-plus/icons-vue
 作用: 把不支持响应式的js api转换为支持响应式
 安装:
 npm i @vueuse/integrations 
-npm i universal-cookie
+npm i universal-cookie // cookie
+npm i @vueuse/core  // 全屏
 ```
 - [x] Axios
 ```bash
@@ -159,9 +160,10 @@ git push --set-upstream origin dev # 建立本地分支和远程分支的关联�
 git add .
 git commit -m "fix: Vue3-Vite-ElementPlus项目
 【后台全局Layout布局开发】
-1、后台页面总布局实现-Container 布局容器
+1、header头部-图标布局
+2、header头部-全屏/退出登录
 " 
-git tag -a v1.0 -m "版本v1.0"
+git tag -a v1.1 -m "版本v1.1"
 git push
 git push --tags
 git status

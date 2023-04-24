@@ -2,7 +2,7 @@
     <div>
         后台首页
     </div>
-    <div>
+    <!-- <div>
         <el-button @click="set">token设置</el-button>
     </div>
     <div>
@@ -10,7 +10,7 @@
     </div>
     <div>
         <el-button  @click="remove">token删除</el-button>
-    </div>
+    </div> -->
 
     <div>
         {{ $store.state.user.username }}
@@ -18,9 +18,9 @@
 
     <hr style="color:red">
 
-    <div>
+    <!-- <div>
         <el-button @click="handleLogout">退出登录</el-button>
-    </div>
+    </div> -->
 
     <!-- setup()语法糖 -->
     <!-- <div>
